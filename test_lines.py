@@ -23,20 +23,20 @@ class TestCodeFunctions(unittest.TestCase):
         self.assertIsInstance(config, dict)
         self.assertIn('Target', config, 'test')
         self.assertIn('Payload', config)
-        print('test_load_config - Success')
+        print('[Success] - test_load_config: Config has correct shape')
 
     def test_get_files(self):
         files = get_files(directory='.\\tests\\', extension='.cs')
         self.assertEqual(len(files), (4))
         self.assertIn(os.path.abspath('.\\tests\\missing.cs'), files)
         self.assertIn(os.path.abspath('.\\tests\\contains.cs'), files)
-        print('test_get_files - Success')
+        print('[Success] - test_get_files: Setup was successful, expected 4 files and received 4')
 
     def test_get_spaces(self):
         line = '    test line'
         spaces = get_spaces(line)
         self.assertEqual(spaces, '    ')
-        print('test_get_spaces - Success')
+        print('[Success] - test_get_spaces: Correct number of space indentations added to new line')
 
     def test_process_file_missing(self):
         file = '.\\tests\\missing.cs'
@@ -47,7 +47,7 @@ class TestCodeFunctions(unittest.TestCase):
             contents = f.read()
             self.assertIn(insert_after, contents)
             self.assertIn(insert_data, contents)
-        print('test_process_file_missing - Success')
+        print(f'[Success] - test_process_file_missing: "{insert_data}" added to missing.cs')
 
     def test_process_file_contains(self):
         file = '.\\tests\\contains.cs'
@@ -60,7 +60,7 @@ class TestCodeFunctions(unittest.TestCase):
             
             # Check if there are no other occurrences of insert_data
             self.assertEqual(contents.count(insert_data), 1)
-        print('test_process_file_contains - Success')
+        print(f'[Success] - test_process_file_contains: contains.cs contains correct number of "{insert_data}"')
 
 if __name__ == '__main__':
     unittest.main()
