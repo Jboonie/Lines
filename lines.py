@@ -1,4 +1,4 @@
-import os,sys
+import os
 import toml
 
 def load_config(config_file):
