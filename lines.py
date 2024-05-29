@@ -40,14 +40,14 @@ def main():
     config = load_config(config_file)
 
     insert_after = config['Target']['InsertAfter']
-    insert_data = config['Payload']['insertData']
+    insert_data = config['Payload']['InsertData']
 
-    print(f'Searching for this string to insert after: {insert_after}')
+    print(f'\nSearching for this string to insert after: {insert_after}')
     print(f'Planning to insert this data: {insert_data}')
 
     files = get_files()
 
-    print(f'\nThese files will be modified:')
+    print(f'\nThese files will be reviewed and potentially modified:')
     for file in files:
         print(f'\t{file}')
 

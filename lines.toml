@@ -2,4 +2,4 @@
 InsertAfter='base.Initialize();'
 
 [Payload]
-insertData='this.GetComponent<LinkComponent>().Initialize(20);'
+InsertData='this.GetComponent<LinkComponent>().Initialize(20);'
