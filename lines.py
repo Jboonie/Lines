@@ -1,5 +1,6 @@
-import os
+import os,sys
 import toml
+
 
 def load_config(config_file):
     with open(config_file, 'r') as file:
@@ -42,7 +43,18 @@ def main():
     insert_after = config['Target']['InsertAfter']
     insert_data = config['Payload']['insertData']
 
+    print(f'Searching for this string to insert after: {insert_after}')
+    print(f'Planning to insert this data: {insert_data}')
+
     files = get_files()
+
+    print(f'\nThese files will be modified:')
+    for file in files:
+        print(f'\t{file}')
+
+    print('\nPress ENTER to continue, press Ctrl + C to stop')
+    userInput = input().lower()
+
     for file in files:
         process_file(file, insert_after, insert_data)
 
